@@ -1,0 +1,80 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+typedef struct node
+{
+int data;
+struct node*link;
+}node;
+node *p,*head,*ll,*q;
+void create()
+{
+head=(node*)malloc(sizeof(node));
+head->link=NULL;
+}
+void insert()
+{
+int x,n;
+printf("\nEnter n : ");
+scanf("%d",&n);
+while(n--)
+{
+ll=(node*)malloc(sizeof(node));
+printf("\nEnter data : ");
+scanf("%d",&x);
+ll->data=x;
+ll->link=NULL;
+p=head;
+while(p->link!=NULL)
+{
+p=p->link;
+}
+p->link=ll;
+}
+}
+void display()
+{
+p=head->link;
+if(p==NULL)
+printf("Empty");
+while(p!=NULL)
+{
+printf("%d ",p->data);
+p=p->link;
+}
+}
+void node1()
+{
+int prev;
+int m,n,c1=1,c2=1;
+printf("\nEnter mth node : ");
+scanf("%d",&m);
+printf("\nEnter nth node : ");
+scanf("%d",&n);
+p=head;
+while(c1<=m)
+{
+p=p->link;
+c1++;
+}
+q=head;
+while(c2<=n)
+{
+q=q->link;
+c2++;
+}
+prev=p->data;
+p->data=q->data;
+q->data=prev;
+}
+void main()
+{
+clrscr();
+create();
+insert();
+display();
+node1();
+printf("\n");
+display();
+getch();
+}
