@@ -7,31 +7,33 @@ int data;
 struct node*link;
 }node;
 node *prev,*p,*head,*ll,*q;
+//CREATING A NEW HEAD NODE
 void create()
 {
 head=(node*)malloc(sizeof(node));
 head->link=NULL;
-head->data=1;
 }
+//FUNCTION TO INSERT AT TAIL
 void insert()
 {
 int x;
-ll=(node*)malloc(sizeof(node));
+ll=(node*)malloc(sizeof(node));  //A NEW NODE
 printf("\nEnter data : ");
 scanf("%d",&x);
-ll->data=x;
+ll->data=x;   
 ll->link=NULL;
 p=head;
-while(p->link!=NULL)
+while(p->link!=NULL)       //LOOP TO POINT TO THE LAST ELEMENT IN THE LIST
 {
 p=p->link;
 }
 p->link=ll;
 }
+//FUNCTION TO DISPLAY THE LIST
 void display()
 {
 p=head->link;
-if(p==NULL)
+if(p==NULL)    //EMPTY CONDITION
 printf("Empty");
 while(p!=NULL)
 {
@@ -39,10 +41,12 @@ printf("%d ",p->data);
 p=p->link;
 }
 }
+//DELETING AT TAIL
 void delete1()
 {
 p=head->link;
 prev=head;
+//AT ANY INSTANCE OF TIME p WILL POINT TO A NODE AND prev WILL POINT TO THE PREVIOUS NODE
 if(prev->link==NULL)
 printf("\nLIST is empty");
 while(p->link!=NULL)
@@ -53,17 +57,19 @@ prev=prev->link;
 printf("\nElement deleted is %d\n",p->data);
 prev->link=NULL;
 }
+/*INSERT AT HEAD*/
 void insert1()
 {
 int e;
 printf("\nEnter element : ");
 scanf("%d",&e);
 p=head;
-ll=(node*)malloc(sizeof(node));
+ll=(node*)malloc(sizeof(node)); //NEW NODE CREATION
 ll->data=e;
 ll->link=p->link;
 p->link=ll;
 }
+//DELETE AT HEAD
 void delete2()
 {
 int count=0;
@@ -81,7 +87,7 @@ scanf("%d",&e);
 ll=(node*)malloc(sizeof(node));
 ll->data=e;
 prev=head;
-while(count<po)
+while(count<po)//LOOP TO GO TO THE POINT BEFORE THE POSITION SPECIFIED BY THE USER
 {
 prev=prev->link;
 count++;
@@ -96,7 +102,7 @@ printf("\nEnter position : ");
 scanf("%d",&pos);
 prev=head;
 p=prev->link;
-while(count<pos)
+while(count<pos)//LOOP TO GO TO THE POINT BEFORE THE POSITION SPECIFIED BY THE USER
 {
 p=p->link;
 prev=prev->link;
