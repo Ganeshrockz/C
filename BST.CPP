@@ -1,11 +1,13 @@
 #include<stdio.h>
 #include<conio.h>
 #include<stdlib.h>
+//Structure that corresponds to a single node
 typedef struct node
 {
 int data;
 struct node *left,*right;
 }node;
+/*Structure for head node*/
 typedef struct head
 {
 node* root;
@@ -23,6 +25,9 @@ t->root=p;
 return;
 }
 q=t->root;
+/*This loop searches for the element on the right or left half of the tree based 
+on its magnitude with respect to the root node.
+You can also use recursion to do this*/
 while(q!=NULL)
 {
 if(ele<q->data)
@@ -61,6 +66,7 @@ q=q->left;
 }
 return 0;
 }
+/*This prints the left subtree,parent,right subtree*/
 void inorder(node*t)
 {
 if(t!=NULL)
@@ -70,6 +76,8 @@ printf("%d ",t->data);
 inorder(t->right);
 }
 }
+/*This prints the parent,left subtree,right subtree*/
+
 void preorder(node*t)
 {
 if(t!=NULL)
@@ -79,6 +87,7 @@ preorder(t->left);
 preorder(t->right);
 }
 }
+/*This prints the left subtree,right subtree,parent*/
 void postorder(node*t)
 {
 if(t!=NULL)
@@ -88,6 +97,7 @@ postorder(t->right);
 printf("%d ",t->data);
 }
 }
+/*The technique used here is that max values are always found on the right of any node*/
 node* max(node*x)
 {
 if(x->right==NULL)
@@ -95,6 +105,7 @@ return x;
 else
 return(max(x->right));
 }
+/*The technique used here is that min values are always found on the left of any node*/
 node* min(node*x)
 {
 if(x->left==NULL)
@@ -102,9 +113,12 @@ return x;
 else
 return(min(x->left));
 }
+/*Function to find the parent of a particular child*/
+
 node*parent(head*t,node*p)
 {
 node *q;
+/*ROOT NODE*/
 if(p==t->root)
 return NULL;
 q=t->root;
@@ -119,6 +133,8 @@ q=q->right;
 }
 return NULL;
 }
+/*DELETION HAS FOUR CASES*/
+
 void delete1(head*t,int ele)
 {
 node*q;
@@ -128,6 +144,8 @@ printf("\nBST is empty");
 return;
 }
 q=t->root;
+/*LOOP to search the element*/
+
 while(q!=NULL)
 {
 if(ele==q->data)
@@ -142,6 +160,9 @@ if(q==NULL)
 printf("\nElement not found");
 return;
 }
+/*CASE 1
+To delete the leaf nodes ie.NODES that dont have a child*/
+
 if(q->left==NULL&&q->right==NULL)
 {
 if(q==t->root)
@@ -155,6 +176,9 @@ else
 parent(t,q)->right=NULL;
 return;
 }
+/*CASE 2
+To delete any intermediate node having a left child*/
+
 if(q->left!=NULL)
 {
 int val;
@@ -164,11 +188,17 @@ delete1(t,ptr->data);
 q->data=val;
 return;
 }
+/*CASE 3
+To delete the root node*/
+
 if(q==t->root)
 {
 t->root=t->root->right;
 return;
 }
+/*CASE 4
+To delete a node having a right child*/
+
 if(parent(t,q)->left==q)
 parent(t,q)->left=q->right;
 else
@@ -179,6 +209,7 @@ void main()
 int c,ele;
 head x;
 clrscr();
+/*Initially root must be NULL indicating that the tree is empty*/
 x.root=NULL;
 do
 {
