@@ -12,21 +12,6 @@ void create()
 head=(node*)malloc(sizeof(node));
 head->link=NULL;
 }
-void insert()
-{
-p=head;
-int d;
-printf("Enter element : ");
-scanf("%d",&d);
-ll=(node*)malloc(sizeof(node));
-ll->data=d;
-while(p->link!=NULL)
-{
-p=p->link;
-}
-ll->link=NULL;
-p->link=ll;
-}
 void display()
 {
 p=head->link;
@@ -41,22 +26,29 @@ p=p->link;
 }
 }
 }
-void delete1()
+void insert1()
 {
+int e;
+printf("\nEnter element : ");
+scanf("%d",&e);
+p=head;
+ll=(node*)malloc(sizeof(node)); //NEW NODE CREATION
+ll->data=e;
+ll->link=p->link;
+p->link=ll;
+}
+//DELETE AT HEAD
+void delete2()
+{
+int count=0;
 prev=head;
 p=prev->link;
 if(prev->link==NULL)
-printf("\nSTACK UNDERFLOW");
-else
 {
-while(p->link!=NULL)
-{
-prev=prev->link;
-p=p->link;
+  printf("\nSTACK underflow");
+  return;
 }
-prev->link=NULL;
-free(p);
-}
+prev->link=p->link;
 }
 void main()
 {
@@ -64,8 +56,8 @@ int c;
 do
 {
 printf("\n---MENU---");
-printf("\n1.Enqueue");
-printf("\n2.Dequeue");
+printf("\n1.Push");
+printf("\n2.Pop");
 printf("\n3.Display");
 printf("\n4.Exit");
 printf("\nEnter your choice : ");
@@ -73,10 +65,10 @@ scanf("%d",&c);
 switch(c)
 {
 case 1:
-insert();
+insert1();
 break;
 case 2:
-delete1();
+delete2();
 break;
 case 3:
 display();
