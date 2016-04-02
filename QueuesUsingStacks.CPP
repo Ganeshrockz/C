@@ -2,6 +2,15 @@
 #include<conio.h>
 #include<stdlib.h>
 #define MAX 10
+/*This is the logic
+First,Create two new stacks
+Case 1:To enqueue
+i)Transfer all the elements from Stack1 to Stack2 until Stack1 becomes empty
+ii)Now PUSH your element into Stack1
+iii)Again transfer all the elements from Stack2 to Stack1 until Stack2 becomes empty
+Case 2:To dequeue
+i)Pop the top element of Stack1*/
+
 struct stack1
 {
 int data[MAX];
