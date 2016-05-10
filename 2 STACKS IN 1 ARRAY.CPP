@@ -1,3 +1,12 @@
+/*This program helps us to maintain two stacks in a single array
+ALGO:
+1:Create an array of size MAX
+2.Store one stack from 0 to MAX/2-1
+3.Store second stack from MAX/2 to MAX-1
+4.Stack 1 gets full when first half of array gets full
+5.Stack 2 gets full when the second half of array gets full
+The disadvantage of this method is that when STACK1 is full and STACK2 is empty
+you cannot use STACK2 to store the elements of STACK1 which is space inefficient*/
 #include<stdio.h>
 #include<conio.h>
 #include<stdlib.h>
