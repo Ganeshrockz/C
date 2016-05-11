@@ -1,3 +1,9 @@
+/*This program again helps to maintain two stacks in an array
+    1.Create an array of size MAX
+    2.Start top of stack 1 from 0 and top of stack 2 from MAX-1
+    3.By this way the two stacks will be growing and shrinking in opposite directions
+    This is a space efficient method.
+    The overflow condition is reached when the distance between top of two stacks is 1.*/
 #include<stdio.h>
 #include<conio.h>
 #include<stdlib.h>
